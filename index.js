@@ -53,7 +53,6 @@ function swap(element_1, element_2) {
 }
 
 /* Bubble Sort */
-// https://www.geeksforgeeks.org/bubble-sort-visualization-using-javascript/?ref=rp
 async function bubble_sort() {
     var blocks = document.querySelectorAll(".block");
   
@@ -84,7 +83,6 @@ async function bubble_sort() {
 }
 
 /* Insertion Sort */
-// https://www.geeksforgeeks.org/insertion-sort-visualization-using-javascript/?ref=rp
 async function insertion_sort() {
     var blocks = document.querySelectorAll(".block");
 
@@ -156,7 +154,6 @@ async function heapify(n, i) {
 }
 
 /* Heap Sort */
-// https://www.geeksforgeeks.org/heap-sort-visualization-using-javascript/?ref=rp
 async function heap_sort() {
     var blocks = document.querySelectorAll(".block");
     let n = blocks.length;
@@ -258,7 +255,6 @@ async function quick_partition(l, r) {
 
 
 /* Quick Sort */
-// https://www.geeksforgeeks.org/quick-sortlomuto-partition-visualization-using-javascript/?ref=rp
 async function quick_sort(l, r) {
     if (l < r) {
       var pivot_idx = await quick_partition(l, r);
