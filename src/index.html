@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://use.fontawesome.com/45ff755216.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Visualizer</title>
+    </head>
+    <body>
+        <nav>
+            <div class="navbar">
+                <i class='bx bx-menu'></i>
+                <div class="title"><a href="#">Sorting Algorithm Visualizer</a></div>
+                <div class="nav-links">
+                    <ul class="links">
+                        <li id = "sbtn" ><a class = "sort-btn" onclick="visualize();"> Sort </a></li>
+                        <li>
+                            <a class = "algorithm-btn"> Algorithms </a>
+                            <ul class="htmlCss-sub-menu sub-menu">
+                                <li class = "item-list"><a onclick="choose_algorithm('bubble');">Bubble Sort</a></li>
+                                <li class = "item-list"><a onclick="choose_algorithm('heap');">Heap Sort</a></li>
+                                <li class = "item-list"><a onclick="choose_algorithm('insert');">Insertion Sort</a></li>
+                                <li class = "item-list"><a onclick="choose_algorithm('quick');">Quick Sort</a></li>
+                            </ul>
+                        </li>
+                        <li><a class = "reset-btn" onclick="reset();"> Reset </a></li>
+                    </ul>
+                </div>           
+            </div>
+        </nav>
+        <div class = "content">
+            <div id="array"></div>
+        </div>
+        <div class="array-slider">
+            <a>Array Size</a>
+            <input type="range" value="0" min="0" max="100" id="slider">
+            <span id="output"></span>
+        </div>
+        </br></br>
+        <a id = "algo-type"></a>
+        <div class="footer">Made <span style="color: red;">
+            </span> by 🐜 Blakley<br>This project is open source, visit the
+            <a class = "github" href="https://github.com/blakley/" target="_blank"> repo.</a>
+        </div>
+        <div class = "social_media">
+            <a href="https://github.com/Blakley"><span>Github</span></a>
+            <a href="https://www.linkedin.com/in/anthony-blakley/"><span>LinkedIn</span></a>
+            <a href="https://twitter.com/anthlone"><span>Twitter</span></a>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
