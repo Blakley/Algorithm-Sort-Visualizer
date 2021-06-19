@@ -209,7 +209,7 @@ nav .navbar .links li:hover .js-sub-menu {
 }
   
 .block_id {
-    /* display: none; */
+    display: none;
     position: absolute;
     color: black;
     margin-top: -20px;

@@ -1,3 +1,17 @@
+function disable_buttons() {
+    // disable buttons
+    document.getElementsByClassName('sort-btn')[0].style.display = "none";
+    document.getElementsByClassName('algorithm-btn')[0].style.display = "none";
+    document.getElementsByClassName('array-slider')[0].style.display = "none";
+}
+
+function enable_buttons() {
+    // enable buttons
+    document.getElementsByClassName('sort-btn')[0].style.display = "";
+    document.getElementsByClassName('algorithm-btn')[0].style.display = "";
+    document.getElementsByClassName('array-slider')[0].style.display = "";
+}
+
 // Slider:
 var slider = document.getElementById("slider");
 var output = document.getElementById("output");
@@ -253,7 +267,6 @@ async function quick_partition(l, r) {
     return i;
 }
 
-
 /* Quick Sort */
 async function quick_sort(l, r) {
     if (l < r) {
@@ -280,22 +293,24 @@ function choose_algorithm(algorithm) {
 
 }
 
-function visualize() {
+async function visualize() {
+    disable_buttons();
 
     if (sort_algo == "bubble")
-        bubble_sort();
+        await bubble_sort();
         
     if (sort_algo == "insert")
-        insertion_sort();
+        await insertion_sort();
         
     if (sort_algo == "heap")
-        heap_sort();
+        await heap_sort();
 
     if (sort_algo == "quick") {
         let r =  document.querySelectorAll(".block").length-1;
-        quick_sort(0, r);
+        await quick_sort(0, r);
     }
 
+    enable_buttons();
 }
 
 function reset() {
