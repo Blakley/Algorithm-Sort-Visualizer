@@ -1,3 +1,8 @@
+// Array creation
+var container = document.getElementById("array");
+var sort_algo = "";
+
+/* disable buttons once sort starts */
 function disable_buttons() {
     // disable buttons
     document.getElementsByClassName('sort-btn')[0].style.display = "none";
@@ -5,27 +10,13 @@ function disable_buttons() {
     document.getElementsByClassName('array-slider')[0].style.display = "none";
 }
 
+/* enable buttons once sort ends */
 function enable_buttons() {
     // enable buttons
     document.getElementsByClassName('sort-btn')[0].style.display = "";
     document.getElementsByClassName('algorithm-btn')[0].style.display = "";
     document.getElementsByClassName('array-slider')[0].style.display = "";
 }
-
-// Slider:
-var slider = document.getElementById("slider");
-var output = document.getElementById("output");
-var element_size = 0;
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-    output.innerHTML = this.value;
-    element_size = this.value;
-}
-
-// Array creation
-var container = document.getElementById("array");
-var sort_algo = "";
   
 /* Create blocks */
 function generate_array() {
@@ -313,8 +304,30 @@ async function visualize() {
     enable_buttons();
 }
 
-function reset() {
+/* Refreshes the page */
+function refresh() {
     location.reload();
 }
+
+/* adjusts the array size */
+function update_array(new_size) {
+    // delete old array ()
+    document.getElementsByClassName('block')[0];
+
+
+    // create new array
+}
+
+var slider = document.getElementById("slider");
+var output = document.getElementById("output");
+var element_size = 0;
+slider.value = 50; // initial state
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+    output.innerHTML = this.value;
+    update_array(this.value);
+}
+
 
 generate_array();
