@@ -5,6 +5,13 @@ body  {
     font-family: 'Comfortaa', cursive;
 }
 
+.centered {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -222,8 +229,7 @@ nav .navbar .links li:hover .js-sub-menu {
 div.array-slider  {
     width: 25em;
     text-align: center;
-    margin-left: 40%;
-    margin-top: 2%;
+    margin-top: 10%; 
 }
    
 #slider {
@@ -256,90 +262,92 @@ div.array-slider  {
 }
 
 .footer {
+    left: 50%;
+    bottom:60px;
+    position:absolute;
+    transform: translate(-50%, -50%);
     text-align: center;
-    transform: translate(0%, 350%);
     color: black;
     font-weight: light;
     font-family: 'Roboto Mono', monospace;
-    margin-left: 1%;
 }
 
 .github {
     text-decoration: none;
     font-weight: bolder;
     color: black;
-    font-family: 'Roboto Mono', monospace;
 }
 
 .social_media {
-     transform: translate(0%, 500%);
-     margin-left: 47%;
-     display: inline-block;
+    left: 50%;
+    bottom:0px;
+    position:absolute;
+    transform: translate(-50%, -50%);
+    display: inline-block;
 }
 
 .social_media a {
-    color:#fff;
-    background: #3e8da8;
-    border-radius:4px;
-    text-align:center;
-    text-decoration:none;
-    font-family:fontawesome;
-    position: relative;
-    display: inline-block;
-    width:40px;
-    height:28px;
-    padding-top:12px;
-    margin:0 2px;
-    -o-transition:all .5s;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-        -webkit-font-smoothing: antialiased;
+   color:#fff;
+   background: #3e8da8;
+   border-radius:4px;
+   text-align:center;
+   text-decoration:none;
+   font-family:fontawesome;
+   position: relative;
+   display: inline-block;
+   width:40px;
+   height:28px;
+   padding-top:12px;
+   margin:0 2px;
+   -o-transition:all .5s;
+   -webkit-transition: all .5s;
+   -moz-transition: all .5s;
+   transition: all .5s;
+       -webkit-font-smoothing: antialiased;
 }
-  
+ 
 .social_media a:hover {
-    background: #47a9ca;
+   background: #3e8da8;
 }
-  
+ 
 .social_media a span {
-    color:#666;
-    position:absolute;
-    font-family:sans-serif;
-    bottom:0;
-    left:-25px;
-    right:-25px;
-    padding:5px 7px;
-    z-index:-1;
-    font-size:14px;
-    border-radius:2px;
-    background:rgb(255, 255, 255);
-    visibility:hidden;
-    opacity:0;
-    -o-transition:all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    -moz-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+   color:#666;
+   position:absolute;
+   font-family:sans-serif;
+   bottom:0;
+   left:-25px;
+   right:-25px;
+   padding:5px 7px;
+   z-index:-1;
+   font-size:14px;
+   border-radius:2px;
+   background:#fff;
+   visibility:hidden;
+   opacity:0;
+   -o-transition:all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+   -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+   -moz-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+   transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-  
+ 
 .social_media a span:before {
-    content:'';
-    width: 0; 
-    height: 0; 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid rgb(58, 141, 197);
-    position:absolute;
-    bottom:-5px;
-    left:40px;
+   content:'';
+   width: 0; 
+   height: 0; 
+   border-left: 5px solid transparent;
+   border-right: 5px solid transparent;
+   border-top: 5px solid #fff;
+   position:absolute;
+   bottom:-5px;
+   left:40px;
 }
-  
+ 
 .social_media a:hover span {
-    bottom:50px;
-    visibility:visible;
-    opacity:1;
+   bottom:50px;
+   visibility:visible;
+   opacity:1;
 }
-  
-/* font awesome icons */
+
 .social_media a:nth-of-type(1):before {
     content:'\f09b';
 }
@@ -359,7 +367,7 @@ div.array-slider  {
 }
 
 #algo-type {
-    margin-left: 47%;
+    margin-top: 5%;
     font-size: 23px;
     opacity: 75%;
 }
