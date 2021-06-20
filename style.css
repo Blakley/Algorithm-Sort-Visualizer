@@ -194,10 +194,10 @@ nav .navbar .links li:hover .js-sub-menu {
 }
 
 .content {
-    margin-left: 25%;
-    margin-top: 10%;
+    margin-top: 0%;
+    margin-left: 0%;
+    border-bottom: 5px solid #122227; 
     width: 1000px;
-    border-bottom: 5px solid #122227;   
 }
 
 #array {
@@ -223,42 +223,6 @@ nav .navbar .links li:hover .js-sub-menu {
     width: 100%;
     text-align: center;
     font-size: 10px;
-}
-
-
-div.array-slider  {
-    width: 25em;
-    text-align: center;
-    margin-top: 10%; 
-}
-   
-#slider {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 18px !important;
-    width: 100%;
-    border-radius: 10em;
-    background-color: #3e8da8;
-    outline: none;
-    margin-bottom: 14px;
-}
-   
-#slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #51bbdf;
-    cursor: pointer;
-    border: 3px solid #f4f4f4;
-}   
-   
-#output {
-    color: black;
-    letter-spacing: 1.5px;
-    font-size: 20px;
-    margin-left: 5px;
 }
 
 .footer {
@@ -367,7 +331,15 @@ div.array-slider  {
 }
 
 #algo-type {
-    margin-top: 5%;
+    margin-top: 10%;
     font-size: 23px;
     opacity: 75%;
+}
+
+.radio_buttons {
+    text-align: center;
+    margin-top: 15%;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    cursor: pointer;
 }
