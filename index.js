@@ -2,6 +2,9 @@
 var container = document.getElementById("array");
 var sort_algo = "";
 
+var remove_pos = 0; // remove from beginning or end of array
+var add_pos = 0; // add from beginning or end of array
+
 /* disable buttons once sort starts */
 function disable_buttons() {
     // disable buttons
@@ -17,24 +20,37 @@ function enable_buttons() {
     document.getElementsByClassName('algorithm-btn')[0].style.display = "";
     document.getElementsByClassName('array-slider')[0].style.display = "";
 }
-  
+
+/* Adds a single block */
+function add_block(index) {
+    var value = Math.ceil(Math.random() * 100);
+        
+    var element = document.createElement("div");
+    element.classList.add("block");
+    element.style.height = `${value * 3}px`;
+    element.style.transform = `translate(${index * 20}px)`;
+
+    var element_value = document.createElement("label");
+    element_value.classList.add("block_id");
+    element_value.innerText = value;
+
+    element.appendChild(element_value);
+
+    if (add_pos == 0) {
+        container.prepend(element);
+        add_pos = 1;
+    }
+    else {
+        container.appendChild(element);   
+        add_pos = 0;
+    }
+}
+
 /* Create blocks */
 function generate_array() {
     // add new blocks
     for (var i = 0; i < 50; i++) {
-        var value = Math.ceil(Math.random() * 100);
-        
-        var element = document.createElement("div");
-        element.classList.add("block");
-        element.style.height = `${value * 3}px`;
-        element.style.transform = `translate(${i * 20}px)`;
-
-        var element_value = document.createElement("label");
-        element_value.classList.add("block_id");
-        element_value.innerText = value;
-  
-        element.appendChild(element_value);
-        container.appendChild(element);
+        add_block(i);
     }
 }
 
@@ -309,25 +325,37 @@ function refresh() {
     location.reload();
 }
 
-/* adjusts the array size */
-function update_array(new_size) {
-    // delete old array ()
-    document.getElementsByClassName('block')[0];
-
-
-    // create new array
-}
-
 var slider = document.getElementById("slider");
 var output = document.getElementById("output");
-var element_size = 0;
+
 slider.value = 50; // initial state
 output.innerHTML = slider.value;
 
-slider.oninput = function() {
-    output.innerHTML = this.value;
-    update_array(this.value);
+/* decrease the array size */
+async function resize_array() {
+    let blocks = document.getElementsByClassName('block');
+    
+    if (blocks.length != slider.value) {
+        if (blocks.length > slider.value) {
+            if (remove_pos == 0) {
+                blocks[0].remove();
+                remove_pos = 1;
+            }
+            else {
+                blocks[blocks.length-1].remove();
+                remove_pos = 0;
+            }
+        }
+        else {
+            // increase
+            add_block(slider.value);
+        }
+    }
 }
 
+slider.oninput = async function() {
+    output.innerHTML = this.value;
+    await resize_array();
+}
 
 generate_array();
