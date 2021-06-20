@@ -1,13 +1,17 @@
+//
 var container = document.getElementById("array");
 var sort_algo = "";
-var sort_size = 50;
+var sort_size = 30;
 var bar_width = 20;
+var sort_time = 0;
 
 /* disable buttons once sort starts */
 function disable_buttons() {
     // disable buttons
     document.getElementsByClassName('sort-btn')[0].style.display = "none";
+    document.getElementsByClassName('reset-btn')[0].style.display = "none";
     document.getElementsByClassName('algorithm-btn')[0].style.display = "none";
+    document.getElementsByClassName('htmlCss-sub-menu')[0].style.display = "none";
 
     document.getElementById("f1").disabled = true;
     document.getElementById("f2").disabled = true;
@@ -19,7 +23,9 @@ function disable_buttons() {
 function enable_buttons() {
     // enable buttons
     document.getElementsByClassName('sort-btn')[0].style.display = "";
+    document.getElementsByClassName('reset-btn')[0].style.display = "";
     document.getElementsByClassName('algorithm-btn')[0].style.display = "";
+    document.getElementsByClassName('htmlCss-sub-menu')[0].style.display = "";
 
     document.getElementById("f1").disabled = false;
     document.getElementById("f2").disabled = false;
@@ -46,6 +52,9 @@ function add_block(index) {
 
 /* Create blocks */
 function generate_array() {
+    // reset time
+    document.getElementById("algo-type").innerHTML = sort_algo;
+
     // add new blocks
     for (var i = 0; i < sort_size; i++) {
         add_block(i);
@@ -102,7 +111,7 @@ function swap(element_1, element_2) {
             setTimeout(() => {
                 container.insertBefore(element_2, element_1);
                 resolve();
-            }, 50);
+            }, 10);
         });
     });
 }
@@ -147,9 +156,18 @@ async function insertion_sort() {
         var key = parseInt(blocks[i].childNodes[0].innerHTML);
         var height = blocks[i].style.height;
 
+        blocks[i].style.backgroundColor = "#ff0000";
+
+        // wait
+        await new Promise((resolve) =>
+            setTimeout(() => {
+                resolve();
+            }, 30)
+        );
+
         while (j >= 0 && parseInt(blocks[j].childNodes[0].innerHTML) > key) {
         
-            blocks[j].style.backgroundColor = "#FF4949";
+            blocks[j].style.backgroundColor = "#ff0000";
               
             blocks[j + 1].style.height = blocks[j].style.height;
             blocks[j + 1].childNodes[0].innerText = blocks[j].childNodes[0].innerText;
@@ -159,7 +177,7 @@ async function insertion_sort() {
             await new Promise((resolve) =>
               setTimeout(() => {
                 resolve();
-              }, 100)
+              }, 15)
             );
               
             // Provide lightgreen color to the sorted part
@@ -170,7 +188,7 @@ async function insertion_sort() {
         
         // Placing the selected element to its correct position
         blocks[j + 1].style.height = height;
-        blocks[j + 1].childNodes[0].innerHTML = key;    
+        blocks[j + 1].childNodes[0].innerHTML = key;  
     }
 }
 
@@ -201,7 +219,7 @@ async function heapify(n, i) {
         await new Promise((resolve) =>
             setTimeout(() => {
                 resolve();
-            }, 100)
+            }, 80)
         );
     
         await heapify(n, largest);
@@ -230,7 +248,7 @@ async function heap_sort() {
         await new Promise((resolve) =>
         setTimeout(() => {
             resolve();
-        }, 100)
+        }, 50)
         );
     
         await heapify(i, 0);
@@ -248,12 +266,12 @@ async function quick_partition(l, r) {
     blocks[r].style.backgroundColor = "#3e8da8";
   
     for (var j = l; j <= r - 1; j++) {
-        blocks[j].style.backgroundColor = "#3e8da8";
+        blocks[j].style.backgroundColor = "#ff0000";
     
         await new Promise((resolve) =>
             setTimeout(() => {
             resolve();
-            }, 50)
+            }, 40)
         );
 
         var value = Number(blocks[j].childNodes[0].innerHTML);
@@ -271,7 +289,7 @@ async function quick_partition(l, r) {
             blocks[i].style.backgroundColor = "#13CE66";
            
             if (i != j) {
-                blocks[j].style.backgroundColor = "#FF4949";
+                blocks[j].style.backgroundColor = "#ff0000";
             }
             
             await new Promise((resolve) =>
@@ -321,16 +339,16 @@ async function quick_sort(l, r) {
 function choose_algorithm(algorithm) {
     sort_algo = algorithm;
     
-    if (sort_algo == "bubble")
+    if (sort_algo == "Bubble Sort")
         document.getElementById("algo-type").text = "Bubble Sort";
         
-    if (sort_algo == "insert") 
+    if (sort_algo == "Insertion Sort") 
         document.getElementById("algo-type").text = "Insertion Sort";
         
-    if (sort_algo == "heap") 
+    if (sort_algo == "Heap Sort") 
         document.getElementById("algo-type").text = "Heap Sort";
 
-    if (sort_algo == "quick")
+    if (sort_algo == "Quick Sort")
         document.getElementById("algo-type").text = "Quick Sort";;
 
 }
@@ -345,24 +363,48 @@ function choose_size(size) {
 async function visualize() {
     disable_buttons();
 
-    if (sort_algo == "bubble")
+    if (sort_algo == "Bubble Sort") {
+        var begin = Date.now();
         await bubble_sort();
-        
-    if (sort_algo == "insert")
+        var end = Date.now();
+        var time = (end - begin)/1000 + " seconds";
+        let final_time = ": " + time;
+        document.getElementById("algo-type").innerHTML += final_time;
+    }
+                
+    if (sort_algo == "Insertion Sort") {
+        var begin = Date.now();
         await insertion_sort();
+        var end = Date.now();
+        var time = (end - begin)/1000 + " seconds";
+        let final_time = ": " + time;
+        document.getElementById("algo-type").innerHTML += final_time;
+    }
         
-    if (sort_algo == "heap")
+        
+    if (sort_algo == "Heap Sort") {
+        var begin = Date.now();
         await heap_sort();
+        var end = Date.now();
+        var time = (end - begin)/1000 + " seconds";
+        let final_time = ": " + time;
+        document.getElementById("algo-type").innerHTML += final_time;
+    }
 
-    if (sort_algo == "quick") {
+    if (sort_algo == "Quick Sort") {
         let r =  document.querySelectorAll(".block").length-1;
+        var begin = Date.now();
         await quick_sort(0, r);
+        var end = Date.now();
+        var time = (end - begin)/1000 + " seconds";
+        let final_time = ": " + time;
+        document.getElementById("algo-type").innerHTML += final_time;
     }
 
     enable_buttons();
 }
 
-/* Refreshes the page */
+/* refresh page */
 function refresh() {
     location.reload();
 }
