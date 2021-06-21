@@ -12,5 +12,5 @@
 <br />
 
 <p align="center">
-  <img src="https://media.giphy.com/media/esoMAnHSQcmvebUYVG/giphy.gif" width=500>
+  <img src="https://media.giphy.com/media/rEzzIIpQWFx2CPcoPd/giphy.gif" width=500>
 </p>
