@@ -23,7 +23,6 @@ function disable_buttons() {
 /* enable buttons once sort ends */
 function enable_buttons() {
     // enable buttons
-    document.getElementsByClassName('sort-btn')[0].style.display = "";
     document.getElementsByClassName('reset-btn')[0].style.display = "";
     document.getElementsByClassName('algorithm-btn')[0].style.display = "";
     document.getElementsByClassName('htmlCss-sub-menu')[0].style.display = "";
@@ -66,6 +65,9 @@ function generate_array() {
 
 /* Resizes the blocks */
 function resize_array() {
+    // enable sort button
+    document.getElementsByClassName('sort-btn')[0].style.display = "";
+
     // create new array array_storage
     let outter_div = document.getElementsByClassName('content')[0];
     let new_array_storage = document.createElement("div");
