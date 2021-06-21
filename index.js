@@ -1,5 +1,5 @@
-//
-var container = document.getElementById("array");
+// global variables
+var array_storage = document.getElementById("array");
 var sort_algo = "";
 var sort_size = 30;
 var bar_width = 20;
@@ -13,6 +13,7 @@ function disable_buttons() {
     document.getElementsByClassName('algorithm-btn')[0].style.display = "none";
     document.getElementsByClassName('htmlCss-sub-menu')[0].style.display = "none";
 
+    // disable submenu buttons
     document.getElementById("f1").disabled = true;
     document.getElementById("f2").disabled = true;
     document.getElementById("f3").disabled = true;
@@ -35,19 +36,21 @@ function enable_buttons() {
 
 /* Adds a single block */
 function add_block(index) {
-    var value = Math.ceil(Math.random() * 100);
-        
+    var value = Math.ceil(Math.random() * 100); // get random bar size    
     var element = document.createElement("div");
     element.classList.add("block");
+
+    // set the bar's height and width
     element.style.height = `${value * 5}px`;
     element.style.transform = `translate(${index * bar_width}px)`;
 
+    // add a number to the bar to determine the sorting order
     var element_value = document.createElement("label");
     element_value.classList.add("block_id");
     element_value.innerText = value;
 
     element.appendChild(element_value);
-    container.appendChild(element);
+    array_storage.appendChild(element);
 }
 
 /* Create blocks */
@@ -63,15 +66,15 @@ function generate_array() {
 
 /* Resizes the blocks */
 function resize_array() {
-    // create new array container
+    // create new array array_storage
     let outter_div = document.getElementsByClassName('content')[0];
-    let new_container = document.createElement("div");
-    new_container.setAttribute("id", "array");
-    outter_div.appendChild(new_container);
+    let new_array_storage = document.createElement("div");
+    new_array_storage.setAttribute("id", "array");
+    outter_div.appendChild(new_array_storage);
 
-    // remove old array container & set global var
+    // remove old array array_storage & set global var
     document.getElementById("array").remove();
-    container = new_container;
+    array_storage = new_array_storage;
 
     // adjust array position & bar-size
     if (sort_size == 10) {
@@ -97,29 +100,30 @@ function resize_array() {
     generate_array();
 }
 
-/* Swap two blocks */
-function swap(element_1, element_2) {
+/* Swap two blocks (bubble_sort) */
+function swap(block_1, block_2) {
     //
     return new Promise((resolve) => {
         // switch style
-        var temp_style = element_1.style.transform;
-        element_1.style.transform = element_2.style.transform;
-        element_2.style.transform = temp_style;
+        var temp_style = block_1.style.transform;
+        block_1.style.transform = block_2.style.transform;
+        block_2.style.transform = temp_style;
 
         // wait 
         window.requestAnimationFrame(function() {
             setTimeout(() => {
-                container.insertBefore(element_2, element_1);
+                array_storage.insertBefore(block_2, block_1);
                 resolve();
-            }, 10);
+            }, 50);
         });
     });
 }
 
 /* Bubble Sort */
+// space: O(1), worst-case--time: O(n^2) -> best: O(n) 
 async function bubble_sort() {
     var blocks = document.querySelectorAll(".block");
-  
+
     for (var i = 0; i < blocks.length; i += 1) {
         for (var j = 0; j < blocks.length - i - 1; j += 1) {
   
@@ -147,13 +151,14 @@ async function bubble_sort() {
 }
 
 /* Insertion Sort */
+// space: O(1), worst-case--time: O(n^2) -> best: O(n)
 async function insertion_sort() {
     var blocks = document.querySelectorAll(".block");
 
-    for (var i = 1; i < blocks.length; i += 1) {
+    for (var i = 1; i < blocks.length; i++) {
        
-        var j = i - 1;
-        var key = parseInt(blocks[i].childNodes[0].innerHTML);
+        var j = i - 1; // (1) previous item
+        var current = parseInt(blocks[i].childNodes[0].innerHTML);
         var height = blocks[i].style.height;
 
         blocks[i].style.backgroundColor = "#ff0000";
@@ -162,13 +167,13 @@ async function insertion_sort() {
         await new Promise((resolve) =>
             setTimeout(() => {
                 resolve();
-            }, 30)
+            }, 75)
         );
 
-        while (j >= 0 && parseInt(blocks[j].childNodes[0].innerHTML) > key) {
+        // (2)
+        while (j >= 0 && parseInt(blocks[j].childNodes[0].innerHTML) > current) {
         
             blocks[j].style.backgroundColor = "#ff0000";
-              
             blocks[j + 1].style.height = blocks[j].style.height;
             blocks[j + 1].childNodes[0].innerText = blocks[j].childNodes[0].innerText;
             j = j - 1;
@@ -177,7 +182,7 @@ async function insertion_sort() {
             await new Promise((resolve) =>
               setTimeout(() => {
                 resolve();
-              }, 15)
+              }, 75)
             );
               
             // Provide lightgreen color to the sorted part
@@ -186,9 +191,9 @@ async function insertion_sort() {
             }
         }
         
-        // Placing the selected element to its correct position
+        // (3) Placing the selected element to its correct position
         blocks[j + 1].style.height = height;
-        blocks[j + 1].childNodes[0].innerHTML = key;  
+        blocks[j + 1].childNodes[0].innerHTML = current;  
     }
 }
 
@@ -197,14 +202,14 @@ async function heapify(n, i) {
     var blocks = document.querySelectorAll(".block");
     
     var largest = i; 
-    var l = 2 * i + 1; 
-    var r = 2 * i + 2; 
+    var left = 2 * i + 1; 
+    var right = 2 * i + 2; 
 
-    if (l < n && Number(blocks[l].childNodes[0].innerHTML) > Number(blocks[largest].childNodes[0].innerHTML))
-        largest = l;
+    if (left < n && Number(blocks[left].childNodes[0].innerHTML) > Number(blocks[largest].childNodes[0].innerHTML))
+        largest = left;
 
-    if (r < n && Number(blocks[r].childNodes[0].innerHTML) > Number(blocks[largest].childNodes[0].innerHTML))
-        largest = r;
+    if (right < n && Number(blocks[right].childNodes[0].innerHTML) > Number(blocks[largest].childNodes[0].innerHTML))
+        largest = right;
  
     if (largest != i) {
         
@@ -219,7 +224,7 @@ async function heapify(n, i) {
         await new Promise((resolve) =>
             setTimeout(() => {
                 resolve();
-            }, 80)
+            }, 65)
         );
     
         await heapify(n, largest);
@@ -227,6 +232,7 @@ async function heapify(n, i) {
 }
 
 /* Heap Sort */
+// space: O(1), time complexity: O(nlog(n))
 async function heap_sort() {
     var blocks = document.querySelectorAll(".block");
     let n = blocks.length;
@@ -246,9 +252,9 @@ async function heap_sort() {
         blocks[0].childNodes[0].innerText = temp2;
     
         await new Promise((resolve) =>
-        setTimeout(() => {
-            resolve();
-        }, 50)
+            setTimeout(() => {
+                resolve();
+            }, 50)
         );
     
         await heapify(i, 0);
@@ -258,25 +264,22 @@ async function heap_sort() {
 }
 
 /* Quick Sort Helper function */
-async function quick_partition(l, r) {
+// get dividing point between left and right side
+async function quick_partition(left, right) {
     var blocks = document.querySelectorAll(".block");
   
-    var pivot = Number(blocks[r].childNodes[0].innerHTML);
-    var i = l - 1;
-    blocks[r].style.backgroundColor = "#3e8da8";
+    var pivot = Number(blocks[right].childNodes[0].innerHTML);
+    var i = left - 1;
+    blocks[right].style.backgroundColor = "#3e8da8";
   
-    for (var j = l; j <= r - 1; j++) {
-        blocks[j].style.backgroundColor = "#ff0000";
-    
+    for (var j = left; j <= right - 1; j++) {    
         await new Promise((resolve) =>
             setTimeout(() => {
             resolve();
-            }, 40)
+            }, 35)
         );
 
         var value = Number(blocks[j].childNodes[0].innerHTML);
-
-        // To compare value of two blocks
         if (value < pivot) {
             i++;
            
@@ -295,30 +298,27 @@ async function quick_partition(l, r) {
             await new Promise((resolve) =>
                 setTimeout(() => {
                     resolve();
-                }, 50)
+                }, 20)
             );
-        } 
-        else {
-            blocks[j].style.backgroundColor = "#FF4949";
         } 
     }
 
     i++;
     var temp1 = blocks[i].style.height;
     var temp2 = blocks[i].childNodes[0].innerText;
-    blocks[i].style.height = blocks[r].style.height;
-    blocks[r].style.height = temp1;
-    blocks[i].childNodes[0].innerText = blocks[r].childNodes[0].innerText;
-    blocks[r].childNodes[0].innerText = temp2;
-    blocks[r].style.backgroundColor = "#13CE66";
-    blocks[i].style.backgroundColor = "#13CE66";
-    
+    blocks[i].style.height = blocks[right].style.height;
+    blocks[right].style.height = temp1;
+    blocks[i].childNodes[0].innerText = blocks[right].childNodes[0].innerText;
+    blocks[right].childNodes[0].innerText = temp2;
+
+    // wait to see style changes
     await new Promise((resolve) =>
         setTimeout(() => {
         resolve();
-        }, 50)
+        }, 20)
     );
 
+    // change styling to complete
     for (var k = 0; k < 20; k++) {
         blocks[k].style.backgroundColor = "#13CE66";
     } 
@@ -327,12 +327,20 @@ async function quick_partition(l, r) {
 }
 
 /* Quick Sort */
-async function quick_sort(l, r) {
-    if (l < r) {
-      var pivot_idx = await quick_partition(l, r);
-      await quick_sort(l, pivot_idx - 1);
-      await quick_sort(pivot_idx + 1, r);
+// space: O(1) runtime: O(nlog(n))
+async function quick_sort(left, right) {
+    var blocks = document.querySelectorAll(".block");
+    if (left < right) {
+        // partition then sort on left and right sides
+        var piv = await quick_partition(left, right);
+        await quick_sort(left, piv - 1);
+        await quick_sort(piv + 1, right);
     }
+
+    // change styling of blocks to complete
+    for (var i = 0; i < blocks.length; i++) {
+        blocks[i].style.backgroundColor = "#13CE66";
+    } 
 }
 
 /* Changes the sort algorithm */
