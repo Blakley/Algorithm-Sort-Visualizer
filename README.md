@@ -1,6 +1,6 @@
 # Sorting Algorithm Visualizer
 
-Sorting Visualization for bubble and insertion. </br>
+Sorting Visualization for `bubble` and `insertion`. </br>
 Visualization is created by first creating divs and styling them. </br>
 Namely, we transform the width and height of a div and apply a color-style to it </br>
 to create a `bar` element. After that, we can swap our created elements and their style properties.
