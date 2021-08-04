@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://use.fontawesome.com/45ff755216.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Algorithm Sorting Visualizer</title>
+    </head>
+    <body>
+        <nav>
+            <div class="navbar">
+                <i class='bx bx-menu'></i>
+                <div class="title"><a onclick="refresh();" >Algorithm Sorting Visualizer</a></div>
+                <div class="nav-links">
+                    <ul class="links">
+                        <li><a class = "sort-btn" onclick="visualize();"> Sort </a></li>
+                        <li>
+                            <a class = "algorithm-btn"> Algorithms </a>
+                            <ul class="htmlCss-sub-menu sub-menu">
+                                <li class = "item-list"><a onclick="choose_algorithm('Bubble Sort');">Bubble Sort</a></li>
+                                <li class = "item-list"><a onclick="choose_algorithm('Insertion Sort');">Insertion Sort</a></li>
+                            </ul>
+                            
+                        </li>
+                        <li><a class = "reset-btn" onclick="resize_array();"> Reset </a></li>
+                    </ul>
+                </div>           
+            </div>
+        </nav>
+        <div class = "content centered">
+            <div id="array"></div>
+        </div>
+        </br></br>
+        <a class =  "centered" id = "algo-type"></a>
+        <div class = "radio_buttons centered">
+            <form name = rButtons class>
+                <input type="radio" onclick="choose_size(10);" id = "f1" name = array_size value="10">10 &nbsp;
+                <input type="radio" onclick="choose_size(30);" id = "f2" name = array_size value="30" checked>30 &nbsp;
+                <input type="radio" onclick="choose_size(50);" id = "f3" name = array_size value="50">50&nbsp;
+                <input type="radio" onclick="choose_size(100);" id = "f4" name = array_size value="100">100
+            </form>
+            </br> <a class = "size_title">Array Size</a>
+        </div>
+        <div class="footer">Made by Anthony Blakley<br>This project is open source, visit the
+            <a class = "github" href="https://github.com/blakley/" target="_blank"> repo.</a>
+        </div>
+        <div class = "social_media">
+            <a href="https://github.com/Blakley"><span>Github</span></a>
+            <a href="https://www.linkedin.com/in/anthony-blakley/"><span>LinkedIn</span></a>
+            <a href="https://twitter.com/anthlone"><span>Twitter</span></a>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
