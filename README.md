@@ -1,4 +1,4 @@
-# Sorting Algorithm Visualizer
+# Algorithm Sorting Visualizer
 
 Sorting Visualization for `bubble` and `insertion`. </br>
 Visualization is created by first creating divs and styling them. </br>
