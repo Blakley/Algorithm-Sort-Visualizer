@@ -19,7 +19,7 @@ nav {
     width: 100%;
     height: 100%;
     height: 70px;
-    background: #3e8da8;
+    background: #7f8385;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     z-index: 99;
 }
@@ -75,7 +75,7 @@ nav .navbar .links li .sub-menu {
     top: 70px;
     left: 0;
     line-height: 40px;
-    background: #3e8da8;
+    background: #7f8385;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     border-radius: 0 0 4px 4px;
     display: none;
@@ -100,7 +100,6 @@ nav .navbar .links li:hover .js-sub-menu {
         display: block;
         max-width: 270px;
         width: 100%;
-        background: #3e8da8;
         line-height: 40px;
         padding: 20px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -158,10 +157,8 @@ nav .navbar .links li:hover .js-sub-menu {
         display: none;
     }
     .navbar .links li .sub-menu .more span {
-        /* background: red; */
         display: flex;
         align-items: center;
-        /* justify-content: space-between; */
     }
 
     .links li .sub-menu .more:hover .more-sub-menu {
@@ -210,7 +207,7 @@ nav .navbar .links li:hover .js-sub-menu {
   
 .block {
     width: 15px;
-    background-color: #3e8da8;
+    background-color: #4c4d4e;
     position: absolute;
     bottom: 0px;
     transition: 0.1s all ease;
@@ -225,6 +222,29 @@ nav .navbar .links li:hover .js-sub-menu {
     text-align: center;
     font-size: 10px;
 }
+
+.block:hover {
+    background-color: #3e8da8;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+#algo-type {
+    margin-top: 10%;
+    font-size: 23px;
+    opacity: 75%;
+}
+
+.radio_buttons {
+    text-align: center;
+    margin-top: 15%;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    cursor: pointer;
+}
+
+/* ----------------------------Footer------------------------------- */
 
 .footer {
     left: 50%;
@@ -253,7 +273,7 @@ nav .navbar .links li:hover .js-sub-menu {
 
 .social_media a {
    color:#fff;
-   background: #3e8da8;
+   background: #424444;
    border-radius:4px;
    text-align:center;
    text-decoration:none;
@@ -276,7 +296,7 @@ nav .navbar .links li:hover .js-sub-menu {
 }
  
 .social_media a span {
-   color:#666;
+   color:rgb(226, 226, 226);
    position:absolute;
    font-family:sans-serif;
    bottom:0;
@@ -286,7 +306,7 @@ nav .navbar .links li:hover .js-sub-menu {
    z-index:-1;
    font-size:14px;
    border-radius:2px;
-   background:#fff;
+   background:rgb(53, 53, 53);
    visibility:hidden;
    opacity:0;
    -o-transition:all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -322,25 +342,4 @@ nav .navbar .links li:hover .js-sub-menu {
 }
 .social_media a:nth-of-type(3):before {
     content:'\f099';
-}
-
-.block:hover {
-    background-color: #2EE59D;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
-}
-
-#algo-type {
-    margin-top: 10%;
-    font-size: 23px;
-    opacity: 75%;
-}
-
-.radio_buttons {
-    text-align: center;
-    margin-top: 15%;
-    font-size: 20px;
-    font-family: 'Roboto Mono', monospace;
-    cursor: pointer;
 }

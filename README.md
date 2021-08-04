@@ -1,30 +1,21 @@
-<br />
-<p align="center">
-  <h3 align="center"> Sorting Algorithm Visualizer
- </h3>
-  <p align="center">
-    Sorting Visualization for bubble, quick, heap, and insertion sort.
-    <br />
-    <a href="https://blakley.github.io/Sort-Visualizer/"><strong>« —— Try It  ——»</strong></a>
-    <br />
-  </p>
-</p
-<br />
+# Sorting Algorithm Visualizer
 
-<p align="center">
+Sorting Visualization for bubble and insertion. </br>
+
+## Demo <a href="https://blakley.github.io/Sort-Visualizer/"><strong>here</strong></a>
+<p>
   <img src="https://media.giphy.com/media/rEzzIIpQWFx2CPcoPd/giphy.gif" width=500>
 </p>
 
-## Getting Started
-
-These instructions will give you a copy of the project up and running on
-your local machine for development and testing purposes.
+## Built With
+  - [Languages](https://www.w3schools.com/html/html_scripts.asp) - HTML, CSS, and JavaScript
+  
+## Todo:
+  - Implement quick sort
+  - Implement heap sort
 
 ## Deployment
 
-Simply open the ```index.html``` file in your browser.
+Simply open the `index.html` file in your browser
 
-## Built With
-
-  - [Languages](https://www.w3schools.com/html/html_scripts.asp) - HTML, CSS, and JavaScript
 
